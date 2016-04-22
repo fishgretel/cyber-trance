@@ -24,7 +24,7 @@ function fish_right_prompt
         set -l duration (echo $CMD_DURATION | humanize_duration)
         echo -sn (set_color $status_color) "$duration  " (set_color normal)
 
-    else if set -l id (last_job_id)
+    else if set -l id (last_job_id -l)
         echo -sn (set_color $status_color) "%$id  " (set_color normal)
     end
 
