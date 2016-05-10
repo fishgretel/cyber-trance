@@ -21,7 +21,7 @@ fisher i cyber
 * Font: 16pt Anonymous Pro Regular
 
 [slack-link]: https://fisherman-wharf.herokuapp.com/
-[slack-badge]: https://img.shields.io/badge/slack-join%20the%20chat-00B9FF.svg?style=flat-square
+[slack-badge]: https://fisherman-wharf.herokuapp.com/badge.svg
 
 [Fisherman]: https://github.com/fisherman/fisherman
 [Cyber.terminal]: https://github.com/fishery/cyber/raw/master/Cyber.terminal
