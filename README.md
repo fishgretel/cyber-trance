@@ -2,16 +2,16 @@
 
 # Cyber
 
-Classical prompt inspired by hacking the kernel.
+Simple prompt inspired by "hacking" the kernel.
 
 ![Cyber]
 
 ## Install
 
-With [Fisherman]
+With [fisherman]
 
 ```fish
-fisher i cyber
+fisher cyber
 ```
 
 ## Terminal Settings
