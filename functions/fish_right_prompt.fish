@@ -2,12 +2,10 @@ function fish_right_prompt
     set -l status_copy $status
     set -l status_code $status_copy
 
-    set -g pos 0
     set -e parts
 
     function push
-        set -g pos (math $pos+1)
-        set -g parts[$pos] $argv
+        set -g parts $parts $argv
     end
 
     function seper

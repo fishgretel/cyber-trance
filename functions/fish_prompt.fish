@@ -1,11 +1,9 @@
 function fish_prompt
 
-    set -g pos 0
     set -e parts
 
     function push
-        set -g pos (math $pos+1)
-        set -g parts[$pos] $argv
+        set -g parts $parts $argv
     end
 
     set -l pwd_info (pwd_info "/")
@@ -33,11 +31,11 @@ function fish_prompt
     end
 
     if test ! -z "$pwd_info[1]"
-        push (cprintf "<fg:#999>%s</fg>" "$pwd_info[1]")
+        push (cprintf "<fg:aaa>%s</fg>" "$pwd_info[1]")
     end
 
     if test ! -z "$pwd_info[3]"
-        push (cprintf "<fg:#aaa>%s</fg>" "$pwd_info[3]")
+        push (cprintf "<fg:#ccc>%s</fg>" "$pwd_info[3]")
     end
 
     push (cprintf "<fg:#999>%s</fg>" " ▍ ")
