@@ -8,14 +8,16 @@ ___
 
 ***Prompts you into trance!***
 
-A fork of the original [Cyber] Theme.
-
-![Cyber-Trance]
+A fork of the original [Cyber] Theme:
 
 * Leightweight and simple, _pragmatic_!
 * Optimized for speed, _no bloat_!
 * Kinda _semantic coloring_ options (powered by [`cprintf`](https://github.com/Markcial/cprintf))
 * Easy to change, _flexible_!
+
+![Cyber-Trance]
+
+## Integration
 
 While truly optional the following tools are supported:
 
