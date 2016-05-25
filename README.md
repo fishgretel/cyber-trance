@@ -10,6 +10,8 @@ ___
 
 A fork of the original [Cyber] Theme.
 
+![Cyber-Trance]
+
 * Leightweight and simple, _pragmatic_!
 * Optimized for speed, _no bloat_!
 * Kinda _semantic coloring_ options (powered by [`cprintf`](https://github.com/Markcial/cprintf))
@@ -41,7 +43,7 @@ A recommandable and well-matching font:
 
 [slack-link]: https://fisherman-wharf.herokuapp.com/
 [slack-badge]: https://fisherman-wharf.herokuapp.com/badge.svg
-
+[Cyber-Trance]: https://cloud.githubusercontent.com/assets/80815/15529646/1776807a-224f-11e6-8bf0-77c210919af1.png
 [Fisherman]: https://github.com/fisherman/fisherman
 [Cyber]: https://github.com/fisherman/cyber
 [Cyber.terminal]: https://github.com/fishery/cyber/raw/master/Cyber.terminal
