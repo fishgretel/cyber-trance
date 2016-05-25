@@ -2,9 +2,6 @@
 
 # Cyber-Trance
 
-**Work in progress!**
-___
-
 A fork of the original [Cyber] Theme:
 
 * Lightweight and simple, _pragmatic_!
@@ -33,7 +30,7 @@ While truly optional the following tools are supported:
 On *OS X* *homebrew* can be used to get these:
 
 ```
-brew install pyenv
+brew install pyenv --HEAD
 brew install vcprompt --HEAD
 ```
 
@@ -56,7 +53,11 @@ Works well with the original color sets
 
 A recommandable and well-matching font:
 
-* Font: 12pt Literation Mono
+* [Literation Mono](https://github.com/powerline/fonts/tree/master/LiberationMono)
+
+## Got BASH?
+
+If you tend to use `bash` please check out the [`pragmaprompt`](https://github.com/gretel/pragmaprompt) for a similar approach.
 
 [slack-link]: https://fisherman-wharf.herokuapp.com/
 [slack-badge]: https://fisherman-wharf.herokuapp.com/badge.svg
