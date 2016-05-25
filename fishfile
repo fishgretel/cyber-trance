@@ -1,6 +1,6 @@
-git_util
+cprintf
+host_info
+humanize_duration
+last_job_id
 pwd_info
 pwd_is_home
-host_info
-last_job_id
-humanize_duration
