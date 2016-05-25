@@ -3,10 +3,7 @@
 # Cyber-Trance
 
 **Work in progress!**
-
 ___
-
-***Prompts you into trance!***
 
 A fork of the original [Cyber] Theme:
 
@@ -17,12 +14,30 @@ A fork of the original [Cyber] Theme:
 
 ![Cyber-Trance]
 
+## Requirements
+
+The terminal needs to have some capabilities:
+
+* *UTF8* (few chars used)
+* *256 colors* (all the cool kids have it)
+
+> Tested on *iTerm3 nightlies*.
+
 ## Integration
 
 While truly optional the following tools are supported:
 
 * [`vcprompt`](https://bitbucket.org/gward/vcprompt) - *git*, *hg*, and *svn* info at low latencies
-* [`pyenv`](https://github.com/yyuu/pyenv) - the currently activated *virtualenv* is shown
+* [`pyenv`](https://github.com/yyuu/pyenv) - the currently activated *virtualenv* is shown - nice for *Python* hack*etc - otherwise maybe not.
+
+On *OS X* homebrew can be used to get these:
+
+```
+brew install pyenv
+brew install vcprompt --HEAD
+```
+
+> Note: The *bitbucket* repo of `vcprompt` *homebrew* uses is one of the few actually being maintained.
 
 ## Install
 
