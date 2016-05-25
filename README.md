@@ -19,7 +19,7 @@ A fork of the original [Cyber] Theme:
 The terminal needs to have some capabilities:
 
 * *UTF8* (few chars used)
-* *256 colors* (all the cool kids have it)
+* *256 colors* or more (all the cool kids have it)
 
 > Tested on *iTerm3 nightlies*.
 
@@ -30,7 +30,7 @@ While truly optional the following tools are supported:
 * [`vcprompt`](https://bitbucket.org/gward/vcprompt) - *git*, *hg*, and *svn* info at low latencies
 * [`pyenv`](https://github.com/yyuu/pyenv) - the currently activated *virtualenv* is shown - nice for *Python* hack*etc - otherwise maybe not.
 
-On *OS X* homebrew can be used to get these:
+On *OS X* *homebrew* can be used to get these:
 
 ```
 brew install pyenv
