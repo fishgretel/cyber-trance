@@ -62,7 +62,7 @@ function fish_right_prompt
     end
 
     if test ! -z "$status_code"
-        push (cprintf "<fg:#ddf>%s</fg><fg:#a00>%s</fg>" "$status_code" " █")
+        push (cprintf "<fg:#ddf>%s</fg><fg:#a00>%s</fg>" "$status_code" "█")
     else
         push (cprintf "<fg:#0e6>%s</fg>" " █")
     end
