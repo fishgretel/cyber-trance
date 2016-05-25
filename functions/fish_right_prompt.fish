@@ -60,6 +60,7 @@ function fish_right_prompt
     if test "$CMD_DURATION" -gt 1
         set -l duration (echo $CMD_DURATION | humanize_duration)
         push (cprintf "<fg:#99f>%s</fg>" "$duration")
+        seper
     end
 
     if test ! -z "$status_code"
