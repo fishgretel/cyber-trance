@@ -39,7 +39,6 @@ A recommandable and well-matching font:
 
 * Font: 12pt Literation Mono
 
-
 [slack-link]: https://fisherman-wharf.herokuapp.com/
 [slack-badge]: https://fisherman-wharf.herokuapp.com/badge.svg
 
