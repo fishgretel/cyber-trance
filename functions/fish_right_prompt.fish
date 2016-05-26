@@ -79,7 +79,7 @@ function fish_right_prompt
         # not so good, display code
         push (cprintf " <fg:#eef><bg:#c00>%s</bg></fg>" "$status_copy" )
     else
-        if test "$CMD_DURATION" -le 1
+        if test "$CMD_DURATION" -lt 1
             # nothing happened
             push (cprintf "<fg:#669>%s</fg>" " █")
         else if test "$CMD_DURATION" -ge $drtn_thrshld
