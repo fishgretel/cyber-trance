@@ -23,14 +23,14 @@ function fish_prompt
     if test 0 -eq (id -u $USER)
         push (cprintf "<fg:#c77>%s</fg><fg:#844>%s</fg>" (host_info "user" "|"))
     else
-        push (cprintf "<fg:#666>%s</fg><fg:#448>%s</fg>" (host_info "user" "|"))
+        push (cprintf "<fg:#669>%s</fg><fg:#448>%s</fg>" (host_info "user" "|"))
     end
 
     # inside of home directory?
     if pwd_is_home
         push (cprintf "<fg:#77c>%s</fg>" "~/")
     else
-        push (cprintf "<fg:#666>%s</fg>" "/")
+        push (cprintf "<fg:#66b>%s</fg>" "/")
     end
 
     # make use of `pwd_info`
@@ -45,7 +45,7 @@ function fish_prompt
     end
 
     # what has once been `\$ `
-    push (cprintf "<fg:#44b>%s</fg>" $prmpt_symbl)
+    push (cprintf "<fg:#33c>%s</fg>" $prmpt_symbl)
 
     # iterate over parts and echo each
     for s in $parts
