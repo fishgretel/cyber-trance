@@ -27,12 +27,11 @@ function fish_right_prompt
         set -e status_copy
     end
 
-
     # inside a virtualenv directory?
     if test ! -z "$DIRENV_DIR"
         seper
         set -l venv (pwd_info " ")
-        push (cprintf "<fg:#55b>%s</fg>" "direnv")
+        push (cprintf "<fg:#64a>%s</fg>" "env")
     end
 
     # python available?
