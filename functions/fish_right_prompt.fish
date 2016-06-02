@@ -10,7 +10,7 @@ function fish_right_prompt
     # settings
     set -l duration_thresh 5000
     set -l vc_prompt_fmt '%n:%b %u %m'
-    # set -l vc_prompt_fmt '%n:%b@%r%u%m'
+    #set -l vc_prompt_fmt '%n:%b@%r%u%m'
     set -l vc_prompt_timeout 5000
 
     # wrapper for comfort
@@ -31,7 +31,7 @@ function fish_right_prompt
     if test ! -z "$DIRENV_DIR"
         seper
         set -l venv (pwd_info " ")
-        push (cprintf "<fg:#64a>%s</fg>" "env")
+        push (cprintf "<fg:#64a>%s</fg>" "=")
     end
 
     # python available?
@@ -76,7 +76,7 @@ function fish_right_prompt
 
     # last command took more than 1 milisecond?
     if test "$CMD_DURATION" -gt 1
-        # make use of `humanize_duration`
+        # make use of 'humanize_duration'
         set -l duration (echo $CMD_DURATION | humanize_duration)
         # display duration
         seper
