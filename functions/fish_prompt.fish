@@ -14,16 +14,16 @@ function fish_prompt
     set -l pwd_info (pwd_info "/")
     set uid (id -u $USER)
 
+    # root of all users?
+    if test 0 -eq (id -u $USER)
+        push (cprintf "<fg:#c77>%s</fg><fg:#844>%s</fg>" (host_info "user") "|")
+    else
+        push (cprintf "<fg:#669>%s</fg><fg:#448>%s</fg>" (host_info "user") "|")
+    end
+
     # ssh session? display hostname
     if test ! -z "$SSH_CLIENT"
         push (cprintf "<fg:#ee6>%s</fg>" (host_info "host"))
-    end
-
-    # root of all users?
-    if test 0 -eq (id -u $USER)
-        push (cprintf "<fg:#c77>%s</fg><fg:#844>%s</fg>" (host_info "user" "|"))
-    else
-        push (cprintf "<fg:#669>%s</fg><fg:#448>%s</fg>" (host_info "user" "|"))
     end
 
     # inside of home directory?

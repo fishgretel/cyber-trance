@@ -10,7 +10,7 @@ function fish_right_prompt
     # settings
     set -l duration_thresh 5000
     set -l vc_prompt_fmt '%n:%b %u %m'
-    # set -l vc_prompt_fmt '%n:%b@%r %u %m'
+    # set -l vc_prompt_fmt '%n:%b@%r%u%m'
     set -l vc_prompt_timeout 5000
 
     # wrapper for comfort
