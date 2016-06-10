@@ -4,10 +4,10 @@
 
 A fork of the original [Cyber] Theme:
 
-* Lightweight and simple, _pragmatic_!
-* Optimized for speed, _no bloat_!
-* Kinda _semantic coloring_ options (powered by [`cprintf`](https://github.com/Markcial/cprintf))
-* Easy to change, _flexible_!
+* Lightweight and simple ➞ **pragmatic**
+* Optimized for speed ➞ **no bloat**
+* Kinda _semantic coloring_ options (powered by [`cprintf`](https://github.com/Markcial/cprintf)) ➞ **suited for most species**
+* Easy to change ➞ **flexible**.
 
 ![Cyber-Trance]
 
@@ -15,23 +15,27 @@ A fork of the original [Cyber] Theme:
 
 The terminal needs to have some capabilities:
 
-* *UTF8* (few chars used)
-* *256 colors* or more (all the cool kids have it)
+* **UTF8** (few characters used)
+* **256 colors** or more (all the cool kids have it :children_crossing:)
 
-> Tested on *iTerm3 nightlies*.
+> Tested on *iTerm2 nightlies*:
+>
+> `brew cask install iterm2-nightly`
 
 ## Integration
 
 While truly optional the following tools are supported:
 
-* [`vcprompt`](https://bitbucket.org/gward/vcprompt) - *git*, *hg*, and *svn* info at low latencies
-* [`pyenv`](https://github.com/yyuu/pyenv) - the currently activated *virtualenv* is shown - nice for *Python* hack*etc - otherwise maybe not.
+* [`vcprompt`](https://bitbucket.org/gward/vcprompt) - **git**, **hg**, and **svn** info at low latencies
+* [`pyenv`](https://github.com/yyuu/pyenv) - the currently activated **virtualenv** is shown __or__ the version of **Python** currently enabled by *pyenv*
+* [`ry`](https://github.com/jneen/ry) - the version of **Ruby** currently enabled by *ry*.
 
 On *OS X* *homebrew* can be used to get these:
 
 ```
-brew install pyenv --HEAD
 brew install vcprompt --HEAD
+brew install pyenv --HEAD
+brew install ry
 ```
 
 > Note: The *bitbucket* repo of `vcprompt` *homebrew* uses is one of the few actually being maintained.
