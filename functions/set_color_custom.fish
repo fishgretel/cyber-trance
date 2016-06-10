@@ -4,7 +4,7 @@ function set_color_custom
     set -U fish_color_param                 44a
     set -U fish_color_redirection           66a
     set -U fish_color_comment               66a
-    set -U fish_color_error                 f00
+    set -U fish_color_error                 a0f
     set -U fish_color_escape                66e
     set -U fish_color_operator              66e
     set -U fish_color_end                   66e
