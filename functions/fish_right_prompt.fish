@@ -9,7 +9,7 @@ function fish_right_prompt
 
     # settings
     set -l duration_thresh 5000
-    set -l vc_prompt_fmt '%n:%b%u%m'
+    set -l vc_prompt_fmt '%n:%b %u %m'
     #set -l vc_prompt_fmt '%n:%b@%r %u %m'
     set -l vc_prompt_timeout 5000
 
@@ -18,9 +18,9 @@ function fish_right_prompt
         set -g r_parts $r_parts $argv
     end
 
-    # add seperating element
+    # add seperator (<hr> :)
     function seper
-        set -g r_parts $r_parts (cprintf "<fg:#33c>%s</fg>" "|")
+        set -g r_parts $r_parts (cprintf "<fg:#33c>%s</fg>" '|')
     end
 
     if test "$status_copy" -eq 0
@@ -31,7 +31,7 @@ function fish_right_prompt
     if test ! -z "$DIRENV_DIR"
         seper
         set -l venv (pwd_info " ")
-        push (cprintf "<fg:#64a>%s</fg>" "=")
+        push (cprintf "<fg:#64a>%s</fg>" '.')
     end
 
     # python available?
@@ -40,20 +40,27 @@ function fish_right_prompt
         if test "$VIRTUAL_ENV" = "$PWD"
             set -l venv (pwd_info " ")
             seper
-            push (cprintf "<fg:#225>pyve</fg><fg:#66c>%s</fg>" "$venv[1]")
+            push (cprintf "<fg:#226>ve</fg><fg:#66d>%s</fg>" "$venv[1]")
         # nope, but is it managed by pyenv?
         else if test ! -z "$PYENV_VERSION"
             seper
-            push (cprintf "<fg:#225>py</fg><fg:#66c>%s</fg>" "$PYENV_VERSION")
+            push (cprintf "<fg:#226>py</fg><fg:#66c>%s</fg>" "$PYENV_VERSION")
+        # else if test -f "$PYENV_ROOT/version"
+        #     set -l py_ver (head -c 1024 "$PYENV_ROOT/version")
+        #     seper
+        #     push (cprintf "<fg:#226>py</fg><fg:#66a>%s</fg>" "$py_ver")
         end
     end
 
-    # # TODO: not many folks will use gemsets. figure something nicer
-    # if test "$GEM_HOME" = "$PWD"
-    #     set -l gemh (pwd_info " ")
-    #     seper
-    #     push (cprintf "<fg:#77e>%s</fg>" "$gemh[1]")
-    # end
+    # ry available?
+    if command -v ry >/dev/null
+        set -l link (readlink /usr/local/lib/ry/current)
+        if test ! -z "$link"
+            set -l rb_ver (string replace -r '.*/' '' $link)
+            seper
+            push (cprintf "<fg:#225>rb</fg><fg:#66c>%s</fg>" "$rb_ver")
+        end
+    end
 
     # vcprompt available?
     # TODO: have parser for vcprompt output like pwd_info
@@ -61,7 +68,8 @@ function fish_right_prompt
         # inside a version controlled directory?
         set -l vc_prompt (command vcprompt -t $vc_prompt_timeout -f $vc_prompt_fmt)
         if test ! -z "$vc_prompt"
-            # display vcprompt's output
+            # one space shall be enough
+            set -l vc_prompt (string replace '  ' ' ' $vc_prompt)
             seper
             push (cprintf "<fg:#77d>%s</fg>" "$vc_prompt")
         end
@@ -92,13 +100,13 @@ function fish_right_prompt
     else
         if test "$CMD_DURATION" -lt 1
             # nothing happened
-            push (cprintf "<fg:#669>%s</fg>" "█")
+            push (cprintf "<fg:#669>%s</fg>" '█')
         else if test "$CMD_DURATION" -ge $duration_thresh
             # took a while, alternate color
-            push (cprintf "<fg:#fe4>%s</fg>" "█")
+            push (cprintf "<fg:#fe4>%s</fg>" '█')
         else if test "$CMD_DURATION" -ge 1
             # all lights green, ready to prompt
-            push (cprintf "<fg:#0d2>%s</fg>" "█")
+            push (cprintf "<fg:#0d2>%s</fg>" '█')
         end
     end
 
