@@ -10,17 +10,30 @@ function fish_right_prompt
     end
     set -e r_parts
 
-    # settings
+    # symbols - unicode
+    # set -l direnv_symbol '📂 '
+    # set -l python_symbol '🐍 '
+    # set -l record_symbol '📹 '
+    # set -l ruby_symbol '🔺 '
+    # set -l seper_symbol '|'
+    # set -l status_symbol '█'
+
+    # symbols - plain
+    set -l direnv_symbol '.'
+    set -l python_symbol 'py'
+    set -l record_symbol '📹 '
+    set -l ruby_symbol 'rb'
     set -l seper_symbol '|'
     set -l status_symbol '█'
-    set -l direnv_symbol '📂 '
-    set -l python_symbol '🐍 '
-    set -l record_symbol '📹 '
-    set -l ruby_symbol '🔺 '
 
+    # vcprompt format string
     set -l vc_prompt_fmt '%n:%b %u %m'
     #set -l vc_prompt_fmt '%n:%b@%r %u %m'
+
+    # abort if it'd take longer
     set -l vc_prompt_timeout 5000
+
+    # what duration is considered to be long
     set -l duration_thresh 5000
 
     # wrapper for comfort

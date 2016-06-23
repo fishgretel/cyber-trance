@@ -9,9 +9,9 @@ function fish_prompt
     end
 
     # settings
-    set -l seper_symbol '|'
-    set -l prompt_symbol '◺ '
     set -l leveL_symbol '/'
+    set -l prompt_symbol '◺ '
+    set -l seper_symbol '|'
 
     # initialize
     set -e parts
