@@ -1,5 +1,5 @@
 # https://github.com/fishgretel/cyber-trance
-# Copyright (c) 2016 Tom Hensel <github@jitter.eu>
+# 2016 Tom Hensel <github@jitter.eu>
 #
 function fish_prompt
 
@@ -8,17 +8,21 @@ function fish_prompt
         set -g parts $parts $argv
     end
 
+    # settings
+    set -l seper_symbol '|'
+    set -l prompt_symbol '◺ '
+    set -l leveL_symbol '/'
+
     # initialize
     set -e parts
-    set -l prmpt_symbl '◺ '
-    set -l pwd_info (pwd_info '/')
-    set uid (id -u $USER)
+    set -l pwd_info (pwd_info "$leveL_symbol")
+    set -l uid (id -u $USER)
 
     # root of all users?
-    if test 0 -eq (id -u $USER)
-        push (cprintf "<fg:#c77>%s</fg><fg:#844>%s</fg>" (host_info "user") '|')
+    if test 0 -eq "$uid"
+        push (cprintf "<fg:#c77>%s</fg><fg:#844>%s</fg>" (host_info "user") "$seper_symbol")
     else
-        push (cprintf "<fg:#669>%s</fg><fg:#448>%s</fg>" (host_info "user") '|')
+        push (cprintf "<fg:#669>%s</fg><fg:#448>%s</fg>" (host_info "user") "$seper_symbol")
     end
 
     # ssh session? display hostname
@@ -28,24 +32,24 @@ function fish_prompt
 
     # inside of home directory?
     if pwd_is_home
-        push (cprintf "<fg:#77c>%s</fg>" '~/')
+        push (cprintf "<fg:#77c>%s%s</fg>" "~" "$leveL_symbol")
     else
-        push (cprintf "<fg:#66b>%s</fg>" '/')
+        push (cprintf "<fg:#66b>%s</fg>" "$leveL_symbol")
     end
 
     # make use of `pwd_info`
     if test ! -z "$pwd_info[2]"
-        push (cprintf "≈<fg:#999>%s</fg><fg:#66b>%s</fg>" "$pwd_info[2]" '/')
+        push (cprintf "<fg:#999>%s%s</fg><fg:#66b>%s</fg>" "≈" "$pwd_info[2]" "$leveL_symbol")
     end
     if test ! -z "$pwd_info[1]"
         push (cprintf "<fg:aaa>%s</fg>" "$pwd_info[1]")
     end
     if test ! -z "$pwd_info[3]"
-        push (cprintf "<fg:#77b>%s</fg><fg:#ccd>%s</fg>" '/' "$pwd_info[3]")
+        push (cprintf "<fg:#77b>%s</fg><fg:#ccd>%s</fg>" "$leveL_symbol" "$pwd_info[3]")
     end
 
     # what has once been `\$ `
-    push (cprintf "<fg:#33c>%s</fg>" $prmpt_symbl)
+    push (cprintf "<fg:#33c>%s</fg>" $prompt_symbol)
 
     # iterate over parts and echo each
     for s in $parts

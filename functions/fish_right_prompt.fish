@@ -1,17 +1,27 @@
 # https://github.com/fishgretel/cyber-trance
-# Copyright (c) 2016 Tom Hensel <github@jitter.eu>
+# 2016 Tom Hensel <github@jitter.eu>
 #
 function fish_right_prompt
 
     # initialize
     set -l status_copy $status
+    if test "$status_copy" -eq 0
+        set -e status_copy
+    end
     set -e r_parts
 
     # settings
-    set -l duration_thresh 5000
+    set -l seper_symbol '|'
+    set -l status_symbol '█'
+    set -l direnv_symbol '📂 '
+    set -l python_symbol '🐍 '
+    set -l record_symbol '📹 '
+    set -l ruby_symbol '🔺 '
+
     set -l vc_prompt_fmt '%n:%b %u %m'
     #set -l vc_prompt_fmt '%n:%b@%r %u %m'
     set -l vc_prompt_timeout 5000
+    set -l duration_thresh 5000
 
     # wrapper for comfort
     function push
@@ -19,19 +29,21 @@ function fish_right_prompt
     end
 
     # add seperator (<hr> :)
-    function seper
-        set -g r_parts $r_parts (cprintf "<fg:#33c>%s</fg>" '|')
+    function seper -V seper_symbol
+        set -g r_parts $r_parts (cprintf "<fg:#33c>%s</fg>" "$seper_symbol")
     end
 
-    if test "$status_copy" -eq 0
-        set -e status_copy
+    # asciinema recording?
+    if test -n "$ASCIINEMA_REC"
+        push (cprintf "%s" "$record_symbol")
+        seper
     end
 
     # inside a virtualenv directory?
     if test ! -z "$DIRENV_DIR"
         seper
         set -l venv (pwd_info " ")
-        push (cprintf "<fg:#64a>%s</fg>" '.')
+        push (cprintf "<fg:#64a>%s</fg>" "$direnv_symbol")
     end
 
     # python available?
@@ -40,15 +52,11 @@ function fish_right_prompt
         if test "$VIRTUAL_ENV" = "$PWD"
             set -l venv (pwd_info " ")
             seper
-            push (cprintf "<fg:#226>ve</fg><fg:#66d>%s</fg>" "$venv[1]")
+            push (cprintf "<fg:#226>%sve</fg><fg:#66d>%s</fg>" "$python_symbol" "$venv[1]")
         # nope, but is it managed by pyenv?
         else if test ! -z "$PYENV_VERSION"
             seper
-            push (cprintf "<fg:#226>py</fg><fg:#66c>%s</fg>" "$PYENV_VERSION")
-        # else if test -f "$PYENV_ROOT/version"
-        #     set -l py_ver (head -c 1024 "$PYENV_ROOT/version")
-        #     seper
-        #     push (cprintf "<fg:#226>py</fg><fg:#66a>%s</fg>" "$py_ver")
+            push (cprintf "<fg:#226>%s</fg><fg:#66c>%s</fg>" "$python_symbol" "$PYENV_VERSION")
         end
     end
 
@@ -58,7 +66,7 @@ function fish_right_prompt
         if test ! -z "$link"
             set -l rb_ver (string replace -r '.*/' '' $link)
             seper
-            push (cprintf "<fg:#225>rb</fg><fg:#66c>%s</fg>" "$rb_ver")
+            push (cprintf "<fg:#225>%s</fg><fg:#66c>%s</fg>" "$ruby_symbol" "$rb_ver")
         end
     end
 
@@ -79,7 +87,7 @@ function fish_right_prompt
     if set -l id (last_job_id -l)
         # display job id
         seper
-        push (cprintf "<fg:#88e>%s</fg>" "%$id")
+        push (cprintf "<fg:#88e>%s</fg>" "$id")
     end
 
     # last command took more than 1 milisecond?
@@ -91,8 +99,8 @@ function fish_right_prompt
         push (cprintf "<fg:#99e>%s</fg>" "$duration")
     end
 
+    # last element, seperate in any case
     seper
-
     # how is the status of the last command?
     if test ! -z "$status_copy"
         # not so good, display code
@@ -100,13 +108,13 @@ function fish_right_prompt
     else
         if test "$CMD_DURATION" -lt 1
             # nothing happened
-            push (cprintf "<fg:#669>%s</fg>" '█')
+            push (cprintf "<fg:#669>%s</fg>" "$status_symbol")
         else if test "$CMD_DURATION" -ge $duration_thresh
             # took a while, alternate color
-            push (cprintf "<fg:#fe4>%s</fg>" '█')
+            push (cprintf "<fg:#fe4>%s</fg>" "$status_symbol")
         else if test "$CMD_DURATION" -ge 1
             # all lights green, ready to prompt
-            push (cprintf "<fg:#0d2>%s</fg>" '█')
+            push (cprintf "<fg:#0d2>%s</fg>" "$status_symbol")
         end
     end
 
